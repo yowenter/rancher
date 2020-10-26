@@ -1,11 +1,13 @@
 TARGETS := $(shell ls scripts)
 
-replace_base:
-	sed -i "s/{DockerImageBase}/${BASE_IMAGE}/g" Dockerfile.dapper
+image_render:
+	sed -i "s/{REPOSITORY}/${REPOSITORY}/g" Dockerfile.dapper
+	sed -i "s/{BASE_IMAGE}/${BASE_IMAGE}/g" Dockerfile.dapper
+	sed -i "s/{BASE_NAMESPACE}/${BASE_NAMESPACE}/g" Dockerfile.dapper
 
 
 
-.dapper: replace_base
+.dapper: image_render
 ifneq ("$(wildcard $(.dapper))","")
 	@echo dapper exsits, download ignore
 else
