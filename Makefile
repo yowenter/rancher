@@ -17,8 +17,9 @@ else
 endif
 
 base:
-	docker build -f Dockerfile.base -t ${BASE_IMAGE} .
-	docker push ${BASE_IMAGE}
+	docker build -f Dockerfile.base -t ${REGISTRY}/${BASE_IMAGE} .
+	docker push ${REGISTRY}/${BASE_IMAGE}
+	docker tag ${REGISTRY}/${BASE_IMAGE} ${BASE_IMAGE}
 
 
 $(TARGETS): .dapper
