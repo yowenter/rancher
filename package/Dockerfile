@@ -1,4 +1,4 @@
-FROM {REPOSITORY}/{BASE_IMAGE_SERVER}
+FROM {REPOSITORY}/{BASE_NAMESPACE}/{BASE_IMAGE_SERVER}
 
 # RUN apt-get update && apt-get install -y git curl ca-certificates unzip xz-utils && \
 #     useradd rancher && \

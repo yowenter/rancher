@@ -35,8 +35,11 @@ fi
 sed -i "s/{REPOSITORY}/${REPOSITORY}/g" Dockerfile
 sed -i "s/{REPOSITORY}/${REPOSITORY}/g" Dockerfile.agent
 
-sed -i "s/{BASE_IMAGE_SERVER}/${BASE_IMAGE_SERVER}" Dockerfile
-sed -i "s/{BASE_IMAGE_AGENT}/${BASE_IMAGE_AGENT}" Dockerfile.agent
+sed -i "s/{BASE_IMAGE_SERVER}/${BASE_IMAGE_SERVER}/g" Dockerfile
+sed -i "s/{BASE_IMAGE_AGENT}/${BASE_IMAGE_AGENT}/g" Dockerfile.agent
+
+sed -i "s/{BASE_NAMESPACE}/${BASE_NAMESPACE}/g" Dockerfile
+sed -i "s/{BASE_NAMESPACE}/${BASE_NAMESPACE}/g" Dockerfile.Agent
 
 
 docker build --build-arg VERSION=${TAG} --build-arg ARCH=${ARCH} --build-arg IMAGE_REPO=${REPO} --build-arg SYSTEM_CHART_DEFAULT_BRANCH=${SYSTEM_CHART_DEFAULT_BRANCH} -t ${IMAGE} .

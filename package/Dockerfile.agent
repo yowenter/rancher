@@ -1,4 +1,4 @@
-FROM {REPOSITORY}/{BASE_IMAGE_AGENT}
+FROM {REPOSITORY}/{BASE_NAMESPACE}/{BASE_IMAGE_AGENT}
 # FROM ubuntu:18.04
 # ARG ARCH=amd64
 # ENV DOCKER_URL_amd64=https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 \
