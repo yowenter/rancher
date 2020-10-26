@@ -1,11 +1,25 @@
 TARGETS := $(shell ls scripts)
 
-.dapper:
+replace_base:
+	sed -i "s/{DockerImageBase}/${BASE_IMAGE}" Dockerfile.dapper
+
+
+
+.dapper: replace_base
+ifneq ("$(wildcard $(.dapper))","")
+	@echo dapper exsits, download ignore
+else
 	@echo Downloading dapper
 	@curl -sL https://releases.rancher.com/dapper/latest/dapper-`uname -s`-`uname -m` > .dapper.tmp
 	@@chmod +x .dapper.tmp
 	@./.dapper.tmp -v
 	@mv .dapper.tmp .dapper
+endif
+
+base:
+	docker build -f Dockerfile.base -t ${BASE_IMAGE} .
+	docker push ${BASE_IMAGE}
+
 
 $(TARGETS): .dapper
 	./.dapper $@
