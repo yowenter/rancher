@@ -17,14 +17,8 @@ else
 endif
 
 base:
-	docker build -f Dockerfile.base -t ${REGISTRY}/${BASE_IMAGE} .
-	docker push ${REGISTRY}/${BASE_IMAGE}
-	docker tag ${REGISTRY}/${BASE_IMAGE} ${BASE_IMAGE}
-
-# fix sed -i /
-prepare-base:
-	docker pull ${REGISTRY}/${BASE_IMAGE}
-	docker tag ${REGISTRY}/${BASE_IMAGE} ${BASE_IMAGE}
+	docker build -f Dockerfile.base -t ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE} .
+	docker push ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE}
 
 
 $(TARGETS): .dapper
