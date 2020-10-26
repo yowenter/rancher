@@ -1,7 +1,7 @@
 TARGETS := $(shell ls scripts)
 
 replace_base:
-	sed -i "s/{DockerImageBase}/${BASE_IMAGE}" Dockerfile.dapper
+	sed -i "s/{DockerImageBase}/${BASE_IMAGE}/g" Dockerfile.dapper
 
 
 
