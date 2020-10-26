@@ -118,18 +118,18 @@ ENV AUDIT_LOG_MAXSIZE 100
 ENV AUDIT_LEVEL 0
 VOLUME /var/log/auditlog
 
-RUN mkdir -p /usr/share/rancher/ui && \
-    cd /usr/share/rancher/ui && \
-    curl -sL https://releases.rancher.com/ui/${CATTLE_UI_VERSION}.tar.gz | tar xvzf - --strip-components=1 && \
-    mkdir -p assets/rancher-ui-driver-linode && \
-    cd assets/rancher-ui-driver-linode && \
-    curl -O https://linode.github.io/rancher-ui-driver-linode/releases/${LINODE_UI_DRIVER_VERSION}/component.js && \
-    curl -O https://linode.github.io/rancher-ui-driver-linode/releases/${LINODE_UI_DRIVER_VERSION}/component.css && \
-    curl -O https://linode.github.io/rancher-ui-driver-linode/releases/${LINODE_UI_DRIVER_VERSION}/linode.svg && \
-    mkdir -p /usr/share/rancher/ui/api-ui && \
-    cd /usr/share/rancher/ui/api-ui && \
-    curl -sL https://releases.rancher.com/api-ui/${CATTLE_API_UI_VERSION}.tar.gz | tar xvzf - --strip-components=1 && \
-    cd /var/lib/rancher
+# RUN mkdir -p /usr/share/rancher/ui && \
+#     cd /usr/share/rancher/ui && \
+#     curl -sL https://releases.rancher.com/ui/${CATTLE_UI_VERSION}.tar.gz | tar xvzf - --strip-components=1 && \
+#     mkdir -p assets/rancher-ui-driver-linode && \
+#     cd assets/rancher-ui-driver-linode && \
+#     curl -O https://linode.github.io/rancher-ui-driver-linode/releases/${LINODE_UI_DRIVER_VERSION}/component.js && \
+#     curl -O https://linode.github.io/rancher-ui-driver-linode/releases/${LINODE_UI_DRIVER_VERSION}/component.css && \
+#     curl -O https://linode.github.io/rancher-ui-driver-linode/releases/${LINODE_UI_DRIVER_VERSION}/linode.svg && \
+#     mkdir -p /usr/share/rancher/ui/api-ui && \
+#     cd /usr/share/rancher/ui/api-ui && \
+#     curl -sL https://releases.rancher.com/api-ui/${CATTLE_API_UI_VERSION}.tar.gz | tar xvzf - --strip-components=1 && \
+#     cd /var/lib/rancher
 
 # ENV CATTLE_CLI_URL_DARWIN  https://releases.rancher.com/cli2/${CATTLE_CLI_VERSION}/rancher-darwin-amd64-${CATTLE_CLI_VERSION}.tar.gz
 # ENV CATTLE_CLI_URL_LINUX   https://releases.rancher.com/cli2/${CATTLE_CLI_VERSION}/rancher-linux-amd64-${CATTLE_CLI_VERSION}.tar.gz
