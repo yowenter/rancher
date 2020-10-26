@@ -12,6 +12,8 @@ cd $(dirname $0)/../package
 
 TAG=${TAG:-${VERSION}${SUFFIX}}
 REPO=${REPO:-rancher}
+RANCHER_SERVER=${RANCHER_SERVER:-rancher}
+RANCHER_AGENT=${RANCHER_AGENT:-rancher-agent}
 
 if echo $TAG | grep -q dirty; then
     TAG=dev
@@ -23,8 +25,8 @@ fi
 
 cp ../bin/rancher ../bin/agent ../bin/data.json .
 
-IMAGE=${REPO}/rancher:${TAG}
-AGENT_IMAGE=${REPO}/rancher-agent:${TAG}
+IMAGE=${REPO}/${RANCHER_SERVER}:${TAG}
+AGENT_IMAGE=${REPO}/${RANCHER_AGENT}:${TAG}
 
 if [ ${ARCH} == arm64 ]; then
     sed -i -e '$a\' -e 'ENV ETCD_UNSUPPORTED_ARCH=arm64' Dockerfile
