@@ -21,6 +21,11 @@ base:
 	docker push ${REGISTRY}/${BASE_IMAGE}
 	docker tag ${REGISTRY}/${BASE_IMAGE} ${BASE_IMAGE}
 
+# fix sed -i /
+prepare-base:
+	docker pull ${REGISTRY}/${BASE_IMAGE}
+	docker tag ${REGISTRY}/${BASE_IMAGE} ${BASE_IMAGE}
+
 
 $(TARGETS): .dapper
 	./.dapper $@
