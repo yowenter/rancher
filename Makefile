@@ -20,6 +20,13 @@ base:
 	docker build -f Dockerfile.base -t ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE} .
 	docker push ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE}
 
+	docker build -f package/Dockerfile.base -t ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE_SERVER} .
+	docker push ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE_SERVER}
+
+	docker build -f package/Dockerfile.agent.base -t ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE_AGENT} .
+	docker push ${REPOSITORY}/${BASE_NAMESPACE}/${BASE_IMAGE_AGENT}
+
+
 
 $(TARGETS): .dapper
 	./.dapper $@
