@@ -53,8 +53,10 @@ echo ${IMAGE} > ../dist/images
 echo ${AGENT_IMAGE} >> ../dist/images
 echo Built ${IMAGE} #${AGENT_IMAGE}
 echo
+docker push  ${AGENT_IMAGE}
+docker push  ${IMAGE}
 
-cd ../bin
-mkdir -p /tmp/system-charts && git clone --branch $SYSTEM_CHART_DEFAULT_BRANCH https://github.com/rancher/system-charts /tmp/system-charts
+# cd ../bin
+# mkdir -p /tmp/system-charts && git clone --branch $SYSTEM_CHART_DEFAULT_BRANCH https://github.com/rancher/system-charts /tmp/system-charts
 TAG=$TAG REPO=${REPO} go run ../pkg/image/export/main.go /tmp/system-charts $IMAGE $AGENT_IMAGE
 
